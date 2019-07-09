@@ -8,16 +8,16 @@ import org.simpleframework.xml.ElementList
 
 
 data class DAOPort(
-    @Element(name = "response")
+    @get:Element(name = "response")
     var response: String? = null
 
 )
 
 data class Response(
-    @Element(name = "-version")
+    @get:Element(name = "-version")
     var version: String? = null,
 
-    @Element(name = "-productName")
+    @get:Element(name = "-productName")
     var productName: String? = null
 )
 

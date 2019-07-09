@@ -16,6 +16,8 @@ class Utils : AppCompatActivity() {
         fun showLog(context: Context, msg: String){
 
         }
+
+        const val LOG_TAG = "PrintDemo: "
     }
 
 }

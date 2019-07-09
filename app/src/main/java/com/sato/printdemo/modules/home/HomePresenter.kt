@@ -1,9 +1,9 @@
 package com.sato.printdemo.modules.home
 
 import android.util.Log
-import com.sato.printdemo.dao.DAOData
-import com.sato.printdemo.dao.DAOPort
+import com.sato.printdemo.dao.smapri.DAOLocal
 import com.sato.printdemo.services.HttpManager
+import com.sato.printdemo.util.Utils
 import retrofit2.Response
 
 class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSetPresenter {
@@ -36,34 +36,24 @@ class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSe
             e.printStackTrace()
         }*/
 
-        HttpManager.getInstance().getApiService().getPort().enqueue(object : retrofit2.Callback<DAOPort> {
-            override fun onFailure(call: retrofit2.Call<DAOPort>, t: Throwable) {
-                Log.e("LogTest ", t.toString())
+        HttpManager.getInstance().getApiService().getDataLocalHost().enqueue(object : retrofit2.Callback<DAOLocal> {
+            override fun onFailure(call: retrofit2.Call<DAOLocal>, t: Throwable) {
+                Log.e(Utils.LOG_TAG, "Failure: $t")
             }
 
-            override fun onResponse(call: retrofit2.Call<DAOPort>, response: Response<DAOPort>) {
+            override fun onResponse(call: retrofit2.Call<DAOLocal>, response: Response<DAOLocal>) {
                 if (response.isSuccessful) {
-                    //ddddd(response.body())
-                    Log.e("kkkk: ", "success" + response.message())
+                    Log.i(Utils.LOG_TAG, "Response success:  ${response.message()}")
+                    checkResponse(response.body())
                 } else {
-                    Log.e("dddd: ", "Not success" + response.message())
+                    Log.w(Utils.LOG_TAG, "Response not success: ${response.message()}")
                 }
             }
         })
     }
 
-    private fun ddddd(body: DAOPort?) {
-
-        //Log.e("sdsdsdsdssdsdsssd", "${body?.response?.code}//")
-
-        /*val size = body?.contacts?.size
-        for (i in 0 until size!!) {
-            //String s = daoData.getCategories().get(i).getName();
-            val name = body.contacts!![i].name
-            val gender = body.contacts!![i].phone!!.mobile
-            Log.e("sdsdsdsdssdsdsssd", "$name - $gender//")
-        }*/
-
+    private fun checkResponse(body: DAOLocal?) {
+        Log.d(Utils.LOG_TAG, "Response: ${body?.version} ${body?.message} ${body?.function}")
     }
 
 }
