@@ -1,6 +1,7 @@
 package com.sato.printdemo.modules.home
 
 import android.util.Log
+import com.sato.printdemo.dao.smapri.DAODataPort
 import com.sato.printdemo.dao.smapri.DAOLocalNull
 import com.sato.printdemo.dao.smapri.DAOLocalRaw
 import com.sato.printdemo.services.HttpManager
@@ -8,6 +9,7 @@ import com.sato.printdemo.util.Utils
 import retrofit2.Response
 
 class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSetPresenter {
+
 
     private val view = views
     private val variableMap: HashMap<String, String> = HashMap()
@@ -29,19 +31,6 @@ class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSe
                     }
                 }
             })
-    }
-
-    private fun getInfoResponse(body: DAOLocalNull?) {
-        Log.d(
-            Utils.LOG_TAG, "Response: " +
-                    "[.@productVersion] ${body?.productVersion}\n" +
-                    "[message] ${body?.message}\n" +
-                    "[result] ${body?.result}\n" +
-                    "[function] ${body?.function}\n" +
-                    "[.@creationTime] ${body?.creationTime}\n" +
-                    "[.@productName] ${body?.productName}"
-        )
-        view.getInfoSuccess(body)
     }
 
     override fun printItem(message: String) {
@@ -80,12 +69,41 @@ class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSe
             })
     }
 
-    private fun setLocalPort() {
+    override fun setDataPort(__device_type: String, __address: String, __protocol: String, __crc: String) {
+
+        HttpManager.getInstance().getApiService().setDataPort(__device_type, __address, __protocol, __crc)
+            .enqueue(object : retrofit2.Callback<DAODataPort> {
+                override fun onFailure(call: retrofit2.Call<DAODataPort>, t: Throwable) {
+                    Log.e(Utils.LOG_TAG, "Failure: $t")
+                }
+
+                override fun onResponse(call: retrofit2.Call<DAODataPort>, response: Response<DAODataPort>) {
+                    if (response.isSuccessful) {
+                        Log.i(Utils.LOG_TAG, "Response success:  ${response.message()}")
+                        responsePort(response.body())
+                    } else {
+                        Log.w(Utils.LOG_TAG, "Response not success: ${response.message()}")
+                    }
+                }
+            })
 
     }
 
 
-
+    private fun getInfoResponse(body: DAOLocalNull?) {
+        Log.d(
+            Utils.LOG_TAG, "Response: " +
+                    "[.@productVersion] ${body?.productVersion}\n" +
+                    "[message] ${body?.message}\n" +
+                    "[result] ${body?.result}\n" +
+                    "[function] ${body?.function}\n" +
+                    "[.deviceType] ${body?.deviceType}\n" +
+                    "[.@creationTime] ${body?.creationTime}\n" +
+                    "[.@productName] ${body?.productName}"
+        )
+        view.getInfoSuccess(body)
+        view.showSnackBar()
+    }
 
     private fun responseRawData(body: DAOLocalRaw?) {
         Log.d(
@@ -97,6 +115,20 @@ class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSe
                     "[.@creationTime] ${body?.creationTime}\n" +
                     "[.@productName] ${body?.productName}"
         )
+        view.showSnackBar()
+    }
+
+    private fun responsePort(body: DAODataPort?) {
+        Log.d(
+            Utils.LOG_TAG, "Response: " +
+                    "[.@productVersion] ${body?.productVersion}\n" +
+                    "[message] ${body?.message}\n" +
+                    "[result] ${body?.result}\n" +
+                    "[function] ${body?.function}\n" +
+                    "[.@creationTime] ${body?.creationTime}\n" +
+                    "[.@productName] ${body?.productName}"
+        )
+        view.showSnackBar()
     }
 
 }

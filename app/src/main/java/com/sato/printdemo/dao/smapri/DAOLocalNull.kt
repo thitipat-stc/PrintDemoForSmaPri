@@ -34,10 +34,10 @@ data class DAOLocalNull(
     var deviceType: String? = "tcpip",
 
     @field:Element(name = "address", required = false)
-    var address: String? = null,
+    var address: String? = "192.168.1.1:9100",
 
     @field:Element(name = "protocol", required = false)
-    var protocol: String? = null,
+    var protocol: String? = "status3_lapin",
 
     @field:Element(name = "crc", required = false)
     var crc: String? = null,
@@ -60,58 +60,3 @@ data class BondedBluetoothDevicesList(
     @field:Element(name = "device", required = false)
     var device: String? = null
 )
-
-
-/*
-@Suppress("ANNOTATION_TARGETS_NON_EXISTENT_ACCESSOR")
-@Root(name = "response", strict = false)
-class DAOLocal {
-
-    @get:Attribute(name = "version")
-    private val version: String? = null
-
-    */
-/*@get:Attribute(name = "productName")
-    private val productName: String? = null
-
-    @get:Attribute(name = "productVersion")
-    private val productVersion: String? = null
-
-    @get:Attribute(name = "creationTime")
-    private val creationTime: String? = null
-
-    @get:Element(name = "result")
-    private val result: String? = null
-
-    @get:Element(name = "function")
-    private val function: String? = null
-
-    @get:Element(name = "message")
-    private val message: String? = null
-
-    @get:Element(name = "deviceType", required = false)
-    private val deviceType = "sato"
-
-    @get:Element(name = "address", required = false)
-    private val address = "sato"
-
-    @get:Element(name = "protocol", required = false)
-    private val protocol = "sato"
-
-    @get:Element(name = "crc", required = false)
-    private val crc = "sato"
-
-    @get:Element(name = "connected", required = false)
-    private val connected = "sato"
-
-    @get:ElementList(name = "bondedBluetoothDevices", required = false, inline = true)
-    private val bondedBluetoothDevices: List<BondedBluetoothDevicesList>? = null
-
-    val response: String
-        get() = "$version: $productName: $productVersion: $creationTime: $result: $function: $message: $deviceType: $address: $protocol: $crc: $connected: $bondedBluetoothDevices"*//*
-
-
-    val response: String
-        get() = "$version: $productName: $productVersion: $creationTime: $result: $function: $message: $deviceType: $address: $protocol: $crc: $connected: $bondedBluetoothDevices"
-
-}*/

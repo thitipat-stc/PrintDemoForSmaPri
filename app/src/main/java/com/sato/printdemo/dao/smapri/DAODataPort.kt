@@ -6,7 +6,7 @@ import org.simpleframework.xml.Root
 
 
 @Root(name = "response", strict = false)
-data class DAOLocalPort(
+data class DAODataPort(
     @field:Attribute(name = "version")
     var version: String? = null,
 
