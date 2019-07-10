@@ -1,7 +1,8 @@
 package com.sato.printdemo.modules.home
 
 import android.util.Log
-import com.sato.printdemo.dao.smapri.DAOLocal
+import com.sato.printdemo.dao.smapri.DAOLocalNull
+import com.sato.printdemo.dao.smapri.DAOLocalRaw
 import com.sato.printdemo.services.HttpManager
 import com.sato.printdemo.util.Utils
 import retrofit2.Response
@@ -9,51 +10,93 @@ import retrofit2.Response
 class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSetPresenter {
 
     private val view = views
+    private val variableMap: HashMap<String, String> = HashMap()
 
-    /*override fun getData() {
-        HttpManager.getInstance().getApiService().getData().enqueue(object : retrofit2.Callback<DAOData> {
-            override fun onFailure(call: retrofit2.Call<DAOData>, t: Throwable) {
-                Log.e("LogTest ", "3")
-            }
 
-            override fun onResponse(call: retrofit2.Call<DAOData>, response: Response<DAOData>) {
-                if (response.isSuccessful) {
-                    view.getDataSuccess(response.body())
-                } else {
-                    Log.e("dddd: ", "Not success" + response.message())
+    override fun getInfo() {
+        HttpManager.getInstance().getApiService().getDataLocalHostNull()
+            .enqueue(object : retrofit2.Callback<DAOLocalNull> {
+                override fun onFailure(call: retrofit2.Call<DAOLocalNull>, t: Throwable) {
+                    Log.e(Utils.LOG_TAG, "Failure: $t")
                 }
-            }
-        })
-    }*/
 
-    override fun printItem(message: String) {
-        /*val theString = "AH0100V0100L0102XM" + message.trim() + "Q1Z"
-        try {
-            val encodeValue = android.util.Base64.encode(theString.toByteArray(), android.util.Base64.URL_SAFE)
-            var encString = String(encodeValue)
-            //Utils.showToast(this, "KKL + $encodeValue")
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }*/
-
-        HttpManager.getInstance().getApiService().getDataLocalHost().enqueue(object : retrofit2.Callback<DAOLocal> {
-            override fun onFailure(call: retrofit2.Call<DAOLocal>, t: Throwable) {
-                Log.e(Utils.LOG_TAG, "Failure: $t")
-            }
-
-            override fun onResponse(call: retrofit2.Call<DAOLocal>, response: Response<DAOLocal>) {
-                if (response.isSuccessful) {
-                    Log.i(Utils.LOG_TAG, "Response success:  ${response.message()}")
-                    checkResponse(response.body())
-                } else {
-                    Log.w(Utils.LOG_TAG, "Response not success: ${response.message()}")
+                override fun onResponse(call: retrofit2.Call<DAOLocalNull>, response: Response<DAOLocalNull>) {
+                    if (response.isSuccessful) {
+                        Log.i(Utils.LOG_TAG, "Response success:  ${response.message()}")
+                        getInfoResponse(response.body())
+                    } else {
+                        Log.w(Utils.LOG_TAG, "Response not success: ${response.message()}")
+                    }
                 }
-            }
-        })
+            })
     }
 
-    private fun checkResponse(body: DAOLocal?) {
-        Log.d(Utils.LOG_TAG, "Response: ${body?.version} ${body?.message} ${body?.function}")
+    private fun getInfoResponse(body: DAOLocalNull?) {
+        Log.d(
+            Utils.LOG_TAG, "Response: " +
+                    "[.@productVersion] ${body?.productVersion}\n" +
+                    "[message] ${body?.message}\n" +
+                    "[result] ${body?.result}\n" +
+                    "[function] ${body?.function}\n" +
+                    "[.@creationTime] ${body?.creationTime}\n" +
+                    "[.@productName] ${body?.productName}"
+        )
+        view.getInfoSuccess(body)
+    }
+
+    override fun printItem(message: String) {
+
+        val theString = "AH0100V0100L0102XM" + message.trim() + "Q1Z"
+        try {
+            val encodeValue = android.util.Base64.encode(theString.toByteArray(), android.util.Base64.URL_SAFE)
+            val encString = String(encodeValue)
+            variableMap["__send_data"] = encString.trim()
+            variableMap["__encoding"] = "base64"
+            sentDataLocalHostRawData(variableMap)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun sentDataLocalHostRawData(variableMap: HashMap<String, String>) {
+
+        val sendData = variableMap["__send_data"]
+        val encoding = variableMap["__encoding"]
+
+        HttpManager.getInstance().getApiService().sentDataLocalHostRawData(sendData!!, encoding!!)
+            .enqueue(object : retrofit2.Callback<DAOLocalRaw> {
+                override fun onFailure(call: retrofit2.Call<DAOLocalRaw>, t: Throwable) {
+                    Log.e(Utils.LOG_TAG, "Failure: $t")
+                }
+
+                override fun onResponse(call: retrofit2.Call<DAOLocalRaw>, response: Response<DAOLocalRaw>) {
+                    if (response.isSuccessful) {
+                        Log.i(Utils.LOG_TAG, "Response success:  ${response.message()}")
+                        responseRawData(response.body())
+                    } else {
+                        Log.w(Utils.LOG_TAG, "Response not success: ${response.message()}")
+                    }
+                }
+            })
+    }
+
+    private fun setLocalPort() {
+
+    }
+
+
+
+
+    private fun responseRawData(body: DAOLocalRaw?) {
+        Log.d(
+            Utils.LOG_TAG, "Response: " +
+                    "[.@productVersion] ${body?.productVersion}\n" +
+                    "[message] ${body?.message}\n" +
+                    "[result] ${body?.result}\n" +
+                    "[function] ${body?.function}\n" +
+                    "[.@creationTime] ${body?.creationTime}\n" +
+                    "[.@productName] ${body?.productName}"
+        )
     }
 
 }

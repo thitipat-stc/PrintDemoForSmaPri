@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root
 
 
 @Root(name = "response", strict = false)
-data class DAOLocal(
+data class DAOLocalRaw(
     @field:Attribute(name = "version")
     var version: String? = null,
 
@@ -29,37 +29,16 @@ data class DAOLocal(
     @field:Element(name = "message")
     var message: String? = null,
 
-    @field:Element(name = "deviceType", required = false)
-    var deviceType: String = "sato",
-
-    @field:Element(name = "address", required = false)
-    var address: String = "sato",
-
-    @field:Element(name = "protocol", required = false)
-    var protocol: String = "sato",
-
-    @field:Element(name = "crc", required = false)
-    var crc: String = "sato",
-
-    @field:Element(name = "connected", required = false)
-    var connected: String = "sato",
-
-    @field:ElementList(name = "bondedBluetoothDevices", required = false, inline = true)
-    var bondedBluetoothDevices: List<BondedBluetoothDevicesList>? = null
+    @field:ElementList(name = "receiveData", required = false, inline = true)
+    var receiveData: ReceiveData? = null
 )
 
-@Root(name = "bondedBluetoothDevices", strict = false)
-data class BondedBluetoothDevicesList(
-    @field:Attribute(name = "count", required = false)
-    var count: String = "sato",
+@Root(name = "receiveData", strict = false)
+data class ReceiveData(
 
-    @field:Attribute(name = "name", required = false)
-    var name: String = "sato",
-
-    @field:Element(name = "device", required = false)
-    var device: String = "sato"
+    @field:Attribute(name = "encoding")
+    var encoding: String? = null
 )
-
 
 /*
 @Suppress("ANNOTATION_TARGETS_NON_EXISTENT_ACCESSOR")

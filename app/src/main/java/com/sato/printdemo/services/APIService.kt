@@ -1,17 +1,30 @@
 package com.sato.printdemo.services
 
-import com.sato.printdemo.dao.DAOData
-import com.sato.printdemo.dao.smapri.DAOLocal
+import com.sato.printdemo.dao.smapri.DAOLocalNull
+import com.sato.printdemo.dao.smapri.DAOLocalPort
+import com.sato.printdemo.dao.smapri.DAOLocalRaw
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 
 interface APIService {
 
-    @GET("contacts")
-    fun getData(): Call<DAOData>
-
     @GET("Printer/Port")
-    fun getDataLocalHost(): Call<DAOLocal>
+    fun getDataLocalHostNull(): Call<DAOLocalNull>
+
+    @GET("Printer/SendRawData")
+    fun sentDataLocalHostRawData(
+        @Query("__send_data") sendData: String,
+        @Query("__encoding") encoding: String
+    ): Call<DAOLocalRaw>
+
+    @GET("Printer/SetPort")
+    fun setLocalPort(
+        @Query("__device_type") sendData: String,
+        @Query("__address") address: String,
+        @Query("__protocol") protocol: String,
+        @Query("__crc") crc: String
+    ): Call<DAOLocalPort>
 
 }

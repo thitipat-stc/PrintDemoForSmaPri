@@ -17,7 +17,6 @@ class HttpManager {
     init {
 
         val retrofit = Retrofit.Builder()
-            //.baseUrl("https://www.w3schools.com/") // https://www.w3schools.com/xml/plant_catalog.xml
             .baseUrl("http://localhost:8080/")
             .client(OkHttpClient())
             .addConverterFactory(SimpleXmlConverterFactory.create())
