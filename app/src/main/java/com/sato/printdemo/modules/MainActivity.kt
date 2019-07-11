@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.sato.printdemo.R
+import com.sato.printdemo.modules.form.FormActivity
 import com.sato.printdemo.modules.home.HomeActivity
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val intent = Intent(this, HomeActivity::class.java)
+        //val intent = Intent(this, FormActivity::class.java)
         startActivity(intent)
         finish()
     }
