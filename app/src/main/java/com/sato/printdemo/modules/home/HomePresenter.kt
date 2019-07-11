@@ -7,6 +7,12 @@ import com.sato.printdemo.dao.smapri.DAOLocalRaw
 import com.sato.printdemo.services.HttpManager
 import com.sato.printdemo.util.Utils
 import retrofit2.Response
+import android.util.Base64.NO_WRAP
+import android.R.attr.data
+import android.util.Base64
+import android.util.Base64.URL_SAFE
+import java.io.UnsupportedEncodingException
+
 
 class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSetPresenter {
 
@@ -36,20 +42,21 @@ class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSe
 
     override fun printItem(message: String) {
 
-        val theString = "AH0100V0100L0102XMSATOAUTO-ID(THAILAND)CO.,LTD.Q1Z"
-        // val theString = "A" +
+        //val theString = "AH0100V0100L0102XM" + message.trim() + "Q1Z"
+        //val theString = "AAPSWKSampleStandardLa%2H0413V00580L0101P02CEUTF-8SSATOAUTO-ID(THAILAND)CO.,LTD.ST0001,CL4NX,3500Q1Z"
+        val theString = "A" +
                 "APSWKSampleStandardLa" +
                 "%2H0413V00580L0101P02CEUTF-8SSATOAUTO-ID(THAILAND)CO.,LTD." +
                 "ST0001,CL4NX,3500" + "Q1Z"
 
-
-
-
-
-
         try {
-            val encodeValue = android.util.Base64.encode(theString.toByteArray(), android.util.Base64.URL_SAFE)
+            val charset = Charsets.UTF_8
+            val encodeValue = Base64.encode(theString.toByteArray(charset), NO_WRAP) // 2019-07-11 23:12:35.235 10694-10694/com.sato.printdemo E/SSSSSSSSSS:: XXXL: G0EbQRtQUxtXS1NhbXBsZVN0YW5kYXJkTGEbJTIbSDA0MTMbVjAwNTgwG0wwMTAxG1AwMhtDRVVURi04G1NTQVRPQVVUTy1JRChUSEFJTEFORClDTy4sTFRELlNUMDAwMSxDTDROWCwzNTAwG1ExG1o=
+            //val encodeValue = Base64.encode(theString.toByteArray(charset), URL_SAFE) // 2019-07-11 23:20:26.746 11217-11217/com.sato.printdemo E/SSSSSSSSSS:: XXXL: G0EbQRtQUxtXS1NhbXBsZVN0YW5kYXJkTGEbJTIbSDA0MTMbVjAwNTgwG0wwMTAxG1AwMhtDRVVU
+                                                                                      // Ri04G1NTQVRPQVVUTy1JRChUSEFJTEFORClDTy4sTFRELlNUMDAwMSxDTDROWCwzNTAwG1ExG1o=
             val encString = String(encodeValue)
+            println(encString)
+
             variableMap["__send_data"] = encString.trim()
             variableMap["__encoding"] = "base64"
             sentDataLocalHostRawData(variableMap)
