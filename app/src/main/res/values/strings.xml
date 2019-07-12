@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">PrintDemo</string>
+
+    <string name="label_standard">
+        [ESC]A
+        [ESC]A3V+00000H+0000[ESC]CS4[ESC]#F5[ESC]A1V00623H0440[ESC]Z
+        [ESC]A[ESC]PS[ESC]WKSampleStandardLa
+        [ESC]%2[ESC]H0413[ESC]V00580[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]SSATO AUTO-ID (THAILAND) CO.,LTD.
+        [ESC]%2[ESC]H0413[ESC]V00551[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]SSample Standard Label
+        [ESC]%0[ESC]H0020[ESC]V00520[ESC]FW03H0394
+        [ESC]%2[ESC]H0412[ESC]V00432[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]SProduct Price:
+        [ESC]%2[ESC]H0414[ESC]V00456[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]SProduct Name:
+        [ESC]%2[ESC]H0413[ESC]V00478[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]SProduct ID:
+        [ESC]%2[ESC]H0418[ESC]V00370[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]SLorem13 ipsum dolor sit amet,
+        [ESC]%2[ESC]H0418[ESC]V00355[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Sconsectetur adipiscing elit, sed do
+        [ESC]%2[ESC]H0418[ESC]V00341[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Seiusmod tempor incididunt ut labore et
+        [ESC]%2[ESC]H0418[ESC]V00326[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Sdolore magna aliqua. Ut enim ad minim
+        [ESC]%2[ESC]H0418[ESC]V00311[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Sveniam, quis nostrud exercitation
+        [ESC]%2[ESC]H0418[ESC]V00296[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Sullamco laboris nisi ut aliquip ex ea
+        [ESC]%2[ESC]H0418[ESC]V00281[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Scommodo consequat. Duis aute irure
+        [ESC]%2[ESC]H0418[ESC]V00266[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Sdolor in reprehenderit in voluptate
+        [ESC]%2[ESC]H0418[ESC]V00251[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Svelit esse cillum dolore eu fugiat
+        [ESC]%2[ESC]H0418[ESC]V00236[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Snulla pariatur. Excepteur sint
+        [ESC]%2[ESC]H0418[ESC]V00221[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Soccaecat cupidatat non proident, sunt
+        [ESC]%2[ESC]H0418[ESC]V00206[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Sin culpa qui officia deserunt mollit
+        [ESC]%2[ESC]H0418[ESC]V00191[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Sanim id est laborum.
+        [ESC]%2[ESC]H0418[ESC]V00176[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]SSed ut perspiciatis unde omnis iste
+        [ESC]%2[ESC]H0418[ESC]V00161[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Snatus error sit voluptatem accusantium
+        [ESC]%2[ESC]H0418[ESC]V00146[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Sdoloremque laudantium, totam rem
+        [ESC]%2[ESC]H0418[ESC]V00131[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Saperiam, eaque ipsa quae ab illo
+        [ESC]%2[ESC]H0418[ESC]V00116[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Sinventore veritatis et quasi
+        [ESC]%2[ESC]H0418[ESC]V00101[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]Sarchitecto beatae vitae dicta sunt
+        [ESC]%2[ESC]H0418[ESC]V00086[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]SLorem13
+        [ESC]%2[ESC]H0247[ESC]V00480[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]S%1$s
+        [ESC]%2[ESC]H0247[ESC]V00457[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]S%2$s
+        [ESC]%2[ESC]H0247[ESC]V00434[ESC]L0101[ESC]P02[ESC]CEUTF-8[ESC]S%3$s
+        [ESC]%2[ESC]H0115[ESC]V00486[ESC]2D30,M,03,1,0[ESC]DN0017,ST0001,CL4NX,3500
+        [ESC]Q1
+        [ESC]Z
+    </string>
 </resources>

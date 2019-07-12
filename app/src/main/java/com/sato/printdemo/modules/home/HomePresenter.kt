@@ -1,5 +1,8 @@
 package com.sato.printdemo.modules.home
 
+import android.content.Context
+import android.util.Base64
+import android.util.Base64.NO_WRAP
 import android.util.Log
 import com.sato.printdemo.dao.smapri.DAODataPort
 import com.sato.printdemo.dao.smapri.DAOLocalNull
@@ -7,20 +10,11 @@ import com.sato.printdemo.dao.smapri.DAOLocalRaw
 import com.sato.printdemo.services.HttpManager
 import com.sato.printdemo.util.Utils
 import retrofit2.Response
-import android.util.Base64.NO_WRAP
-import android.R.attr.data
-import android.util.Base64
-import android.util.Base64.URL_SAFE
-import java.io.UnsupportedEncodingException
 
-
-class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSetPresenter {
-
+class HomePresenter(views: HomeConstructor.HomeSetView, val context: Context) : HomeConstructor.HomeSetPresenter {
 
     private val view = views
     private val variableMap: HashMap<String, String> = HashMap()
-    private val mockUpStr: String =
-        "AhtBG0EzViswMDBIKzAwMBtDUzYbI0Y1G0ExVjAwNDA2SDA0MDYbWgMbIyMDHCAgICAgASAgICAgICAgICAgICAgICAgICAgICAgAhtBG1BTG1dLMngyMjAzZHBpGyUyG0gwMzc3G1YwMDM0NRtQMDIbUkRBQDAsMDE0LDAxNCxUUkFDS0lORyAjOiAgIDFaIDEyMyA0NUUgMDMgMDAwMCAwMDQ3GyUwG0gwMDI2G1YwMDM3ORtGVzA1SDAzNTEbJTIbSDAzNzcbVjAwMzc0G1AwMhtSREFAMSwwMzUsMDM2LFVQUyBHUk9VTkQbJTAbSDAwMjQbVjAwMTc0G0ZXMDVIMDM1MRslMhtIMDM4NRtWMDAxNjYbUDAyG1JEQUAwLDAxMiwwMTEsU1RBVElPTjQgIFBSSU5URVIxMjM0IFVTICAyMTE0ICBKQU4gMTMgMTE6MjA6MjEgMjAxNCBURVNUIDEuMi4zIFNBVE8bJTIbSDAzODAbVjAwMzIzG0JHMDExMDQ+SDFaIDEyMyA0NUUgMDMgPkMwMDAwPkQgPkMwMDQ3PkUgICAgICAbJTIbSDAyNTkbVjAwMjE5G1AwMhtSREJAMCwwMTAsMDEwLDFaIDEyMyA0NUUgMDMgMDAwMCAwMDQ3ICAgICAgGyUyG0gwMzM1G1YwMDE0NRsyRDEyLDA1LDA1LDAyLDIzG0ROMDA0OSxSSU5URVIxMjM0IFVTICAgMjExNCAgIEpBTiAxMyAxMToyMDoyMSAyMDE0DQoNCg0KG1ExG1oDGyMjBCAgGyMjBSAg"
 
     override fun getInfo() {
         HttpManager.getInstance().getApiService().getDataLocalHostNull()
@@ -44,16 +38,28 @@ class HomePresenter(views: HomeConstructor.HomeSetView) : HomeConstructor.HomeSe
 
         //val theString = "AH0100V0100L0102XM" + message.trim() + "Q1Z"
         //val theString = "AAPSWKSampleStandardLa%2H0413V00580L0101P02CEUTF-8SSATOAUTO-ID(THAILAND)CO.,LTD.ST0001,CL4NX,3500Q1Z"
-        val theString = "A" +
+        /*val theString = "A" +
                 "APSWKSampleStandardLa" +
                 "%2H0413V00580L0101P02CEUTF-8SSATOAUTO-ID(THAILAND)CO.,LTD." +
-                "ST0001,CL4NX,3500" + "Q1Z"
+                "ST0001,CL4NX,3500" + "Q1Z"*/
+
+        //val standard = context.resources.getString(R.string.label_standard)
+        //val format = String.format(standard,"ST001")
+
+        val id = "ST00997"
+        val name = "CX6NL"
+        val price = "98658"
+        val outReplace = Utils.LABEL_STANDARD.replace("^1$", id).replace("^2$", name).replace("^3$", price)
+            .replace("^4$", "$id,$name,$price")
 
         try {
             val charset = Charsets.UTF_8
-            val encodeValue = Base64.encode(theString.toByteArray(charset), NO_WRAP) // 2019-07-11 23:12:35.235 10694-10694/com.sato.printdemo E/SSSSSSSSSS:: XXXL: G0EbQRtQUxtXS1NhbXBsZVN0YW5kYXJkTGEbJTIbSDA0MTMbVjAwNTgwG0wwMTAxG1AwMhtDRVVURi04G1NTQVRPQVVUTy1JRChUSEFJTEFORClDTy4sTFRELlNUMDAwMSxDTDROWCwzNTAwG1ExG1o=
+            val encodeValue = Base64.encode(
+                outReplace.toByteArray(charset),
+                NO_WRAP
+            ) // 2019-07-11 23:12:35.235 10694-10694/com.sato.printdemo E/SSSSSSSSSS:: XXXL: G0EbQRtQUxtXS1NhbXBsZVN0YW5kYXJkTGEbJTIbSDA0MTMbVjAwNTgwG0wwMTAxG1AwMhtDRVVURi04G1NTQVRPQVVUTy1JRChUSEFJTEFORClDTy4sTFRELlNUMDAwMSxDTDROWCwzNTAwG1ExG1o=
             //val encodeValue = Base64.encode(theString.toByteArray(charset), URL_SAFE) // 2019-07-11 23:20:26.746 11217-11217/com.sato.printdemo E/SSSSSSSSSS:: XXXL: G0EbQRtQUxtXS1NhbXBsZVN0YW5kYXJkTGEbJTIbSDA0MTMbVjAwNTgwG0wwMTAxG1AwMhtDRVVU
-                                                                                      // Ri04G1NTQVRPQVVUTy1JRChUSEFJTEFORClDTy4sTFRELlNUMDAwMSxDTDROWCwzNTAwG1ExG1o=
+            // Ri04G1NTQVRPQVVUTy1JRChUSEFJTEFORClDTy4sTFRELlNUMDAwMSxDTDROWCwzNTAwG1ExG1o=
             val encString = String(encodeValue)
             println(encString)
 

@@ -23,7 +23,7 @@ class HomeActivity : AppCompatActivity(), HomeConstructor.HomeSetView, View.OnCl
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        presenter = HomePresenter(this)
+        presenter = HomePresenter(this, applicationContext)
         presenter.getInfo()
 
         btn_print.setOnClickListener(this)
@@ -102,7 +102,7 @@ class HomeActivity : AppCompatActivity(), HomeConstructor.HomeSetView, View.OnCl
                         val idCrc = spn_crc.selectedItem.toString().trim()
                         presenter.setDataPort(ipDeviceType, ipAddress, ipProtocol, idCrc)
                     } else {
-                        Snackbar.make(root, "IP Address is in a wrong format", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(root_home, "IP Address is in a wrong format", Snackbar.LENGTH_LONG).show()
                     }
                 }
                 "bluetooth" -> {
@@ -113,12 +113,12 @@ class HomeActivity : AppCompatActivity(), HomeConstructor.HomeSetView, View.OnCl
                         val idCrc = spn_crc.selectedItem.toString().trim()
                         presenter.setDataPort(ipDeviceType, ipAddress, ipProtocol, idCrc)
                     } else {
-                        Snackbar.make(root, "Bluetooth Address is in a wrong format", Snackbar.LENGTH_LONG).show()
+                        Snackbar.make(root_home, "Bluetooth Address is in a wrong format", Snackbar.LENGTH_LONG).show()
                     }
                 }
             }
         } else {
-            Snackbar.make(root, "The IP/BT Address Field Is Compulsory", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(root_home, "The IP/BT Address Field Is Compulsory", Snackbar.LENGTH_LONG).show()
         }
     }
 
@@ -150,11 +150,11 @@ class HomeActivity : AppCompatActivity(), HomeConstructor.HomeSetView, View.OnCl
     override fun getInfoSuccess(body: DAOLocalNull?) {
 
         tv_info.text = "Response: " +
-                "[.@productVersion] ${body?.productVersion}\n" +
-                "[message] ${body?.message}\n" +
-                "[result] ${body?.result}\n" +
-                "[function] ${body?.function}\n" +
-                "[.@creationTime] ${body?.creationTime}\n" +
+                "[.@productVersion] ${body?.productVersion}" +
+                "[message] ${body?.message}" +
+                "[result] ${body?.result}" +
+                "[function] ${body?.function}" +
+                "[.@creationTime] ${body?.creationTime}" +
                 "[.@productName] ${body?.productName}"
 
         when (body?.deviceType) {
@@ -187,7 +187,7 @@ class HomeActivity : AppCompatActivity(), HomeConstructor.HomeSetView, View.OnCl
 
 
     override fun showSnackBar() {
-        Snackbar.make(root, "Success", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(root_home, "Success", Snackbar.LENGTH_SHORT).show()
     }
 
 }

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".modules.form.FormActivity"></activity>
+        <activity android:name=".modules.form.FormActivity" />
         <activity android:name=".modules.home.HomeActivity" />
         <activity android:name=".modules.MainActivity">
             <intent-filter>
