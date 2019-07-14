@@ -18,6 +18,7 @@ class FormPresenter(views: FormConstructor.FormSetView) : FormConstructor.FormSe
             .enqueue(object : retrofit2.Callback<DAOLocalNull> {
                 override fun onFailure(call: retrofit2.Call<DAOLocalNull>, t: Throwable) {
                     Log.e(Utils.LOG_TAG, "Failure: $t")
+                    view.showSnackBar("Please Check if The SmartPri/Printer are connected and running")
                 }
 
                 override fun onResponse(call: retrofit2.Call<DAOLocalNull>, response: Response<DAOLocalNull>) {
@@ -42,8 +43,8 @@ class FormPresenter(views: FormConstructor.FormSetView) : FormConstructor.FormSe
                     "[.@creationTime] ${body?.creationTime}\n" +
                     "[.@productName] ${body?.productName}"
         )
-        view.getInfoSuccess(body)
         view.showSnackBar("Connect Success")
+        view.getInfoSuccess(body)
     }
 
     override fun printItem(_id: String, _name: String, _price: String) {
@@ -87,6 +88,7 @@ class FormPresenter(views: FormConstructor.FormSetView) : FormConstructor.FormSe
             .enqueue(object : retrofit2.Callback<DAOLocalRaw> {
                 override fun onFailure(call: retrofit2.Call<DAOLocalRaw>, t: Throwable) {
                     Log.e(Utils.LOG_TAG, "Failure: $t")
+                    view.showSnackBar("Please Check if The SmartPri/Printer are connected and running")
                 }
 
                 override fun onResponse(call: retrofit2.Call<DAOLocalRaw>, response: Response<DAOLocalRaw>) {
@@ -112,10 +114,10 @@ class FormPresenter(views: FormConstructor.FormSetView) : FormConstructor.FormSe
         )
         when (body?.result) {
             "OK" -> {
-                view.showSnackBar("Print Success")
+                view.showSnackBar("Send Print Success")
             }
             "NG" -> {
-                view.showSnackBar("Print XXX")
+                view.showSnackBar("Print Failed!: ${body?.message}")
             }
         }
 
