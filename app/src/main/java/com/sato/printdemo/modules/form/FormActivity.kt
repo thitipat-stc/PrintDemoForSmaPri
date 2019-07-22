@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.google.android.material.snackbar.Snackbar
@@ -47,11 +48,14 @@ class FormActivity : AppCompatActivity(), FormConstructor.FormSetView, View.OnCl
         val id: String = edt_pro_id.text.toString().trim()
         val name: String = edt_pro_name.text.toString().trim()
         val price: String = edt_pro_price.text.toString().trim()
-        if (id.isNotEmpty() && name.isNotEmpty() && price.isNotEmpty()) {
-            presenter.printItem(id, name, price)
-        } else {
-            Utils.showToast(this, "Please input value!")
+
+        when {
+            id.contentEquals("") -> edt_pro_id.error = "Please input id!"
+            name.contentEquals("") -> edt_pro_name.error = "Please input name!"
+            price.contentEquals("") -> edt_pro_price.error = "Please input price!"
+            else -> presenter.printItem(id, name, price)
         }
+
     }
 
     override fun getInfoSuccess(body: DAOLocalNull?) {
