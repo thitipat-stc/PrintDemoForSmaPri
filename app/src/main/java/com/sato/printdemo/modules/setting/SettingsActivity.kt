@@ -1,4 +1,4 @@
-package com.sato.printdemo.modules
+package com.sato.printdemo.modules.setting
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

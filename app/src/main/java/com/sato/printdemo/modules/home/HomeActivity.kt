@@ -30,9 +30,7 @@ class HomeActivity : AppCompatActivity(), HomeConstructor.HomeSetView, View.OnCl
         bth_set_port.setOnClickListener(this)
         spn_device_type.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
-
             }
-
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 when (spn_device_type.selectedItem) {
                     "tcpip" -> {
@@ -45,10 +43,7 @@ class HomeActivity : AppCompatActivity(), HomeConstructor.HomeSetView, View.OnCl
                     }
                 }
             }
-
         }
-
-
         setSpinner()
 
     }
@@ -86,7 +81,7 @@ class HomeActivity : AppCompatActivity(), HomeConstructor.HomeSetView, View.OnCl
         if (!message.contentEquals("")) {
             presenter.printItem(message)
         } else {
-            Utils.showToast(this, "Please input value!")
+            Utils.showToast(this, "Please check input value!")
         }
     }
 

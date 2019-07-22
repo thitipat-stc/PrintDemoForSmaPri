@@ -1,12 +1,37 @@
 <resources>
-    <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+    <!-- Device Type -->
+    <string-array name="type_entries">
+        <item>TCP/IP</item>
+        <item>Bluetooth</item>
     </string-array>
 
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
+    <string-array name="type_values">
+        <item>tcpip</item>
+        <item>bluetooth</item>
     </string-array>
+
+    <!-- Protocol -->
+    <string-array name="protocol_entries">
+        <item>Status 3</item>
+        <item>Status 3 Lapin</item>
+        <item>Status 4</item>
+    </string-array>
+
+    <string-array name="protocol_values">
+        <item>status3</item>
+        <item>status3_lapin</item>
+        <item>status4</item>
+    </string-array>
+
+    <!-- Protocol -->
+    <string-array name="crc_entries">
+        <item>True</item>
+        <item>False</item>
+    </string-array>
+
+    <string-array name="crc_values">
+        <item>false</item>
+        <item>true</item>
+    </string-array>
+
 </resources>

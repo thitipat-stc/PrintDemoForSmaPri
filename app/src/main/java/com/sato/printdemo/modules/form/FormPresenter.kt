@@ -48,11 +48,11 @@ class FormPresenter(views: FormConstructor.FormSetView) : FormConstructor.FormSe
     }
 
     override fun printItem(_id: String, _name: String, _price: String) {
-        if (_price.toInt() <= 20000) {
+        if (_price.toDouble() <= 20000) {
             val standard = checkPrice(_id, _name, _price, Utils.LABEL_STANDARD)
             sentStandardRawData(standard)
         }
-        if (_price.toInt() > 20000) {
+        if (_price.toDouble() > 20000) {
             val premium = checkPrice(_id, _name, _price, Utils.LABEL_PREMIUM)
             sentStandardRawData(premium)
         }
