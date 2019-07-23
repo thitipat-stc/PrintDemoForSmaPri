@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_form"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root_form"
     android:orientation="vertical">
 
     <include
@@ -74,8 +74,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_edt"
-            android:hint="Enter a Product ID"
+            android:hint="Enter a product id"
             android:inputType="text"
+            android:maxLength="12"
             app:layout_constraintEnd_toEndOf="@+id/tv_id"
             app:layout_constraintStart_toStartOf="@+id/tv_id"
             app:layout_constraintTop_toBottomOf="@+id/tv_id" />
@@ -101,8 +102,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_edt"
-            android:hint="Enter a Product Name"
+            android:hint="Enter a product name"
             android:inputType="text"
+            android:maxLength="12"
             app:layout_constraintEnd_toEndOf="@+id/tv_name"
             app:layout_constraintStart_toStartOf="@+id/tv_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
@@ -128,12 +130,48 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_edt"
-            android:hint="Enter a Product Price"
+            android:hint="Enter a product price"
             android:inputType="number"
             android:maxLength="7"
             app:layout_constraintEnd_toEndOf="@+id/tv_price"
             app:layout_constraintStart_toStartOf="@+id/tv_price"
             app:layout_constraintTop_toBottomOf="@+id/tv_price" />
+
+        <ImageButton
+            android:id="@+id/ib_clear_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:layout_constraintBottom_toTopOf="@+id/edt_pro_id"
+            app:layout_constraintEnd_toEndOf="@+id/edt_pro_id"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/edt_pro_id"
+            app:srcCompat="@drawable/ic_clear"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageButton
+            android:id="@+id/ib_clear_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:layout_constraintBottom_toTopOf="@+id/edt_pro_name"
+            app:layout_constraintEnd_toEndOf="@+id/edt_pro_name"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/edt_pro_name"
+            app:srcCompat="@drawable/ic_clear"
+            tools:ignore="VectorDrawableCompat" />
+
+        <ImageButton
+            android:id="@+id/ib_clear_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:layout_constraintBottom_toTopOf="@+id/edt_pro_price"
+            app:layout_constraintEnd_toEndOf="@+id/edt_pro_price"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/edt_pro_price"
+            app:srcCompat="@drawable/ic_clear"
+            tools:ignore="VectorDrawableCompat" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

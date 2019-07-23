@@ -29,6 +29,9 @@ class FormActivity : AppCompatActivity(), FormConstructor.FormSetView, View.OnCl
 
         btn_print.setOnClickListener(this)
         ib_settings.setOnClickListener(this)
+        ib_clear_id.setOnClickListener(this)
+        ib_clear_name.setOnClickListener(this)
+        ib_clear_price.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -40,6 +43,15 @@ class FormActivity : AppCompatActivity(), FormConstructor.FormSetView, View.OnCl
             R.id.ib_settings -> {
                 val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
+            }
+            R.id.ib_clear_id -> {
+                edt_pro_id.setText("")
+            }
+            R.id.ib_clear_name -> {
+                edt_pro_name.setText("")
+            }
+            R.id.ib_clear_price -> {
+                edt_pro_price.setText("")
             }
         }
     }
