@@ -73,6 +73,17 @@ class Utils : AppCompatActivity() {
                 "Q1" +
                 "Z"
 
+        /*"A" +
+                "A3V+00000H+0000" +
+                "CS4#F5A1V00879H0440" +
+                "Z" +
+                "APSWKLabel1" +
+                "%2H0320V007932D30,M,04,1,0DN0137,PAC01378|Details eg. Paper 3 Set|8.0000|ROLL|PAC013781908170004|||1907-237|DEESIRI TRADING CO. LTD.|Count|1111|1234|2019-08-17|2019-08-17" +
+                "%2H0323V005212D30,M,04,1,0DN0150,PAC00079|Details eg. TOOLS BOX|3.0000|BOX|PAC000791908190040|||1002-139|VAIDEE  YEAM LIMITED PARTNERSHIP|Uncount|1002-139|145689|2019-08-19|2019-08-19" +
+                "%2H0320V002562D30,M,04,1,0DN0146,PAC00053|Details eg. POTATO|14.0000|KG.|PAC000531908180002|||1001-299|THEPBUNCHON  TRADING  CO. LTD.|Uncount|1001-299|123456|2019-08-18|2019-08-18" +
+                "Q1" +
+                "Z"*/
+
         /*const val LABEL_STANDARD = "A" +
                 "A3V+00000H+0000CS4#F5A1V00244H0406" +
                 "Z" +

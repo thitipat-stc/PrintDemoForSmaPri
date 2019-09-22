@@ -7,6 +7,9 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.snackbar.Snackbar
 import com.sato.printdemo.R
 import com.sato.printdemo.dao.smapri.DAOLocalNull
@@ -54,6 +57,30 @@ class FormActivity : AppCompatActivity(), FormConstructor.FormSetView, View.OnCl
                 edt_pro_price.setText("")
             }
         }
+    }
+
+    override fun onBackPressed() {
+        confirm()
+    }
+
+    private fun confirm() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("CONFIRM")
+        builder.setMessage("Confirm to exit?\n*Please input 1234 in field")
+        val view = layoutInflater.inflate(R.layout.alert_confirm_dialog, null)
+        val edtConfirm = view.findViewById(R.id.edt_description) as EditText
+        builder.setPositiveButton("Ok") { dialogInterface, i ->
+            if (edtConfirm.text.toString().contentEquals("1234")) {
+                finish()
+            } else {
+                Toast.makeText(this, "Input incorrect!", Toast.LENGTH_SHORT).show()
+            }
+        }
+        builder.setNegativeButton("Cancel") { dialogInterface, whichButton ->
+            dialogInterface.dismiss()
+        }
+        builder.setView(view)
+        builder.show()
     }
 
     private fun sendItem() {
