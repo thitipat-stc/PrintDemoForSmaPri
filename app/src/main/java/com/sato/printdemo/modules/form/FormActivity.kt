@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -14,7 +13,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.sato.printdemo.R
 import com.sato.printdemo.dao.smapri.DAOLocalNull
 import com.sato.printdemo.modules.setting.SettingsActivity
-import com.sato.printdemo.util.Utils
 import kotlinx.android.synthetic.main.activity_form.*
 import kotlinx.android.synthetic.main.activity_home.btn_print
 import kotlinx.android.synthetic.main.toolbar.*
@@ -31,6 +29,7 @@ class FormActivity : AppCompatActivity(), FormConstructor.FormSetView, View.OnCl
         presenter.getInfo()
 
         btn_print.setOnClickListener(this)
+        //btn_chk_printer.setOnClickListener(this)
         ib_settings.setOnClickListener(this)
         ib_clear_id.setOnClickListener(this)
         ib_clear_name.setOnClickListener(this)

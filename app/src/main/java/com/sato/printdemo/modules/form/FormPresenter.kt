@@ -43,7 +43,7 @@ class FormPresenter(views: FormConstructor.FormSetView) : FormConstructor.FormSe
                     "[.@creationTime] ${body?.creationTime}\n" +
                     "[.@productName] ${body?.productName}"
         )
-        view.showSnackBar("Connect Success")
+        view.showSnackBar("Connect SmaPri Success")
         view.getInfoSuccess(body)
     }
 
@@ -114,10 +114,10 @@ class FormPresenter(views: FormConstructor.FormSetView) : FormConstructor.FormSe
         )
         when (body?.result) {
             "OK" -> {
-                view.showSnackBar("Send Print Success")
+                view.showSnackBar("Send Print to SmaPri Success")
             }
             "NG" -> {
-                view.showSnackBar("Print Failed!: ${body?.message}")
+                view.showSnackBar("Send Print to SmaPri Success Failed!: ${body?.message}")
             }
         }
 

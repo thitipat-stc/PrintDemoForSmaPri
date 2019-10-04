@@ -4,32 +4,89 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEEEEE"
+    android:background="@color/colorPrimaryDark"
     tools:context=".modules.MainActivity">
 
     <ImageView
-        android:id="@+id/iv_logo"
-        android:layout_width="120dp"
+        android:id="@+id/iv_logo_bg"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sato_tran_logo" />
+        app:srcCompat="@drawable/circle" />
 
-    <TextView
+    <ImageView
+        android:id="@+id/iv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Version : 1.0.0"
+        android:adjustViewBounds="true"
+        android:maxWidth="60dp"
+        android:maxHeight="60dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_logo_bg"
+        app:layout_constraintEnd_toEndOf="@+id/iv_logo_bg"
+        app:layout_constraintStart_toStartOf="@+id/iv_logo_bg"
+        app:layout_constraintTop_toTopOf="@+id/iv_logo_bg"
+        app:layout_constraintVertical_bias=".3"
+        app:srcCompat="@drawable/ic_print_96px" />
+
+    <TextView
+        android:id="@+id/tv_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Print Demo"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/iv_logo_bg"
+        app:layout_constraintStart_toStartOf="@+id/iv_logo_bg"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_bg" />
+
+    <TextView
+        android:id="@+id/tv_app_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Version 1.0.0-beta"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_app_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_app_name" />
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_app_name" />
+
+    <TextView
+        android:id="@+id/tv_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Loading..."
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/pb_loading"
+        app:layout_constraintStart_toStartOf="@+id/pb_loading"
+        app:layout_constraintTop_toBottomOf="@+id/pb_loading" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="74dp"
+        android:layout_height="13dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_logo_bg"
+        app:layout_constraintEnd_toEndOf="@+id/iv_logo"
+        app:layout_constraintStart_toStartOf="@+id/iv_logo"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/img_sato_logo_transparent_back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

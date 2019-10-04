@@ -55,8 +55,8 @@ data class BondedBluetoothDevicesList(
     var count: String? = null,
 
     @field:Attribute(name = "name", required = false)
-    var name: String? = null,
+    var name: String? = null/*,
 
     @field:Element(name = "device", required = false)
-    var device: String? = null
+    var device: String? = null*/
 )
