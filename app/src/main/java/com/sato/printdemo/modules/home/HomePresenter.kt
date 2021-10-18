@@ -57,8 +57,10 @@ class HomePresenter(views: HomeConstructor.HomeSetView, val context: Context) : 
             val encodeValue = Base64.encode(
                 outReplace.toByteArray(charset),
                 NO_WRAP
-            ) // 2019-07-11 23:12:35.235 10694-10694/com.sato.printdemo E/SSSSSSSSSS:: XXXL: G0EbQRtQUxtXS1NhbXBsZVN0YW5kYXJkTGEbJTIbSDA0MTMbVjAwNTgwG0wwMTAxG1AwMhtDRVVURi04G1NTQVRPQVVUTy1JRChUSEFJTEFORClDTy4sTFRELlNUMDAwMSxDTDROWCwzNTAwG1ExG1o=
-            //val encodeValue = Base64.encode(theString.toByteArray(charset), URL_SAFE) // 2019-07-11 23:20:26.746 11217-11217/com.sato.printdemo E/SSSSSSSSSS:: XXXL: G0EbQRtQUxtXS1NhbXBsZVN0YW5kYXJkTGEbJTIbSDA0MTMbVjAwNTgwG0wwMTAxG1AwMhtDRVVU
+            )
+            // 2019-07-11 23:12:35.235 10694-10694/com.sato.printdemo E/SSSSSSSSSS:: XXXL: G0EbQRtQUxtXS1NhbXBsZVN0YW5kYXJkTGEbJTIbSDA0MTMbVjAwNTgwG0wwMTAxG1AwMhtDRVVURi04G1NTQVRPQVVUTy1JRChUSEFJTEFORClDTy4sTFRELlNUMDAwMSxDTDROWCwzNTAwG1ExG1o=
+            //val encodeValue = Base64.encode(theString.toByteArray(charset), URL_SAFE)
+            // 2019-07-11 23:20:26.746 11217-11217/com.sato.printdemo E/SSSSSSSSSS:: XXXL: G0EbQRtQUxtXS1NhbXBsZVN0YW5kYXJkTGEbJTIbSDA0MTMbVjAwNTgwG0wwMTAxG1AwMhtDRVVU
             // Ri04G1NTQVRPQVVUTy1JRChUSEFJTEFORClDTy4sTFRELlNUMDAwMSxDTDROWCwzNTAwG1ExG1o=
             val encString = String(encodeValue)
             println(encString)

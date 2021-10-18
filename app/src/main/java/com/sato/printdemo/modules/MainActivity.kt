@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.sato.printdemo.R
 import com.sato.printdemo.modules.form.FormActivity
+import com.sato.printdemo.modules.home.HomeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         //val intent = Intent(this, HomeActivity::class.java)
         Handler().postDelayed({
-            val intent = Intent(this, FormActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }, 1300)

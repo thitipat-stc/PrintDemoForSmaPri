@@ -119,8 +119,7 @@ class HomeActivity : AppCompatActivity(), HomeConstructor.HomeSetView, View.OnCl
 
     private fun isValidIP(address: CharSequence): Boolean {
         if (address.isNotEmpty()) {
-            val regex =
-                "^((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]\\d)|\\d)(\\.((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]\\d)|\\d)){3}\$"
+            val regex = "^((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]\\d)|\\d)(\\.((25[0-5])|(2[0-4]\\d)|(1\\d\\d)|([1-9]\\d)|\\d)){3}\$"
             return address.matches(regex.toRegex())
         }
         return false
